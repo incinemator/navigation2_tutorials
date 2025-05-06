@@ -46,7 +46,7 @@ ResultStatus SendSms::onRun(const std::shared_ptr<const Action::Goal> command)
     false);
   if (!message_success) {
     RCLCPP_INFO(node->get_logger(), "SMS send failed: %s.", response.c_str());
-    return ResultStatus{Status::FAILED, ActionResult::SMS_SEND_FAILED, response};
+    return ResultStatus{nav2_behaviors::Status::FAILED, static_cast<uint16_t>(ActionResult::SMS_SEND_FAILED), response};
   }
 
   RCLCPP_INFO(node->get_logger(), "SMS sent successfully!");
